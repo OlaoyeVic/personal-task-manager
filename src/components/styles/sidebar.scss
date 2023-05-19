@@ -1,0 +1,43 @@
+.sidebar {
+    width: 250px;
+    height: 514px;
+    border-radius: 10px;
+    padding: 10px;
+    header {
+        width: 100%;
+        hr {
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin: 20px auto;
+        }
+    }
+    section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        button {
+            width: 200px;
+            height: 30px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            outline: none;
+            border: none;
+        }
+    }
+    footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-top: 140px;
+        button {
+            width: 168px;
+            height: 31px;
+            background: #38938A;
+            border-radius: 10px;
+            outline: none;
+            border: none;
+        }
+    }
+}

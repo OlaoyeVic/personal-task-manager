@@ -1,0 +1,119 @@
+.task-modal {
+    width: 100%;
+}
+.mobile-task-modal, .mobile-overlay {
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    .mobile-welcome-overlay {
+        background: rgba(49,49,49,0.8);
+    }
+    .mobile-content {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        right: 50%;
+        transform: translate(-50%, -50%);
+        line-height: 1.4;
+        background: #f1f1f1;
+        padding: 14px 28px;
+        border-radius: 10px;
+        width: 327px;
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+.desktop-task-modal {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .mobile-task-modal {
+        display: none;
+    }
+
+    .desktop-task-modal, .desktop-overlay {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: fixed;
+        .desktop-overlay {
+            background: rgba(49,49,49,0.8);
+        }
+        .desktop-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            right: 50%;
+            transform: translate(-50%, -50%);
+            line-height: 1.4;
+            padding: 20px;
+            width: 500px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            // justify-content: center;
+            align-items: center;
+            background: #54BAB9;
+            border: 2px solid #FFFFFF;
+            border-radius: 10px;
+            h2 {
+                font-weight: 700;
+                font-size: 20px;
+                line-height: 27px;
+                color: #FFFFFF;
+                text-align: center;
+                text-transform: uppercase;
+                margin-bottom: 20px;
+            }
+            input {
+                width: 100%;
+                height: 42px;
+                background: #FFFFFF;
+                color: #111111;
+                border-radius: 10px;
+                border: none;
+                outline: none;
+                padding: 4px 8px;
+                margin-bottom: 50px;
+            }
+            select {
+                width: 100%;
+                height: 42px;
+                background: #FFFFFF;
+                color: #111111;
+                border-radius: 10px;
+                border: none;
+                outline: none;
+                padding: 4px 8px;
+                margin-bottom: 50px;
+            }
+            button {
+                width: 182px;
+                height: 40px;
+                font-weight: 800;
+                font-size: 20px;
+                line-height: 200%;
+                text-align: center;
+                text-transform: uppercase;
+                color: #278D8C;
+                background: #FFFFFF;
+                border-radius: 10px;
+                outline: none;
+                border: none;
+                cursor: pointer;
+            }
+        }
+    }
+}

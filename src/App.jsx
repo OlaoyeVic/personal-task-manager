@@ -6,16 +6,12 @@ import Tabs from './components/Tabs'
 import Sidebar from './components/Sidebar'
 
 function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false)
   const [categories, setCategories] = useState([
     'Completed',
     'Urgent',
     'Important',
     'Later Today'
   ])
-
-  const openModal = () => setIsModalOpen(true)
-  const closeModal = () => setIsModalOpen(false)
 
   const addNewCategory = (category) => {
     setCategories([...categories, category])
@@ -29,17 +25,13 @@ function App() {
             <Sidebar 
               categories={categories} 
               setCategories={setCategories} 
-              addNewCategory={addNewCategory} 
-              openModal={openModal} 
+              addNewCategory={addNewCategory}
             />
           </aside>
           <main>
-            <Tabs isModalOpen={isModalOpen} closeModal={closeModal} />
+            <Tabs categories={categories} />
           </main>
         </div>
-        {isModalOpen && (
-          <TaskModal closeModal={closeModal} />
-        )}
     </div>
   )
 }

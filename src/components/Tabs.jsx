@@ -3,27 +3,56 @@ import './styles/tabs.scss'
 import AllTab from '../components/AllTab'
 import ActiveTab from '../components/ActiveTab'
 import CompletedTab from '../components/CompletedTab'
+import TaskModal from './TaskModal'
 
-const Tabs = ({ isModalOpen, closeModal }) => {
+const Tabs = ({ categories }) => {
     const [activeIndex, setActiveIndex] = useState(1)
-    const [tasks, setTasks] = useState([])
-    const [newTasks, setNewTasks] = useState('')
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [newTask, setNewTask] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState('')
 
     const handleClick = (index) => setActiveIndex(index)
     const checkActive = (index, className) => activeIndex === index ? className : ""
 
     const openModal = () => {
-        closeModal();
-    }
+        setIsModalOpen(true);
+      };
+    
+      const closeModal = () => {
+        setIsModalOpen(false);
+      };
+    
+      const handleTaskChange = (event) => {
+        setNewTask(event.target.value);
+      };
+    
+      const handleCategoryChange = (event) => {
+        setSelectedCategory(event.target.value);
+      }
 
-    const handleAddItem = () => {
-        if (newTasks.trim() !== '') {
-          const updatedItems = [...items, { text: newTasks, checked: false }];
-          setTasks(updatedItems);
-          localStorage.setItem('todoItems', JSON.stringify(updatedItems));
-          setNewTasks('');
-        }
-    }
+      const handleSubmit = () => {
+        // Process the new task with the selected category
+        // ...
+    
+        // Clear the input field and selected category
+        setNewTask('');
+        setSelectedCategory('');
+    
+        // Close the modal
+        closeModal();
+      }
+
+      const AddTaskButton = () => {
+        const handleAddTask = () => {
+          openModal();
+        };
+    
+        return (
+          <button className="add-task-button" onClick={handleAddTask}>
+            Add Task
+          </button>
+        );
+      }
 
 
     return (
@@ -76,23 +105,31 @@ const Tabs = ({ isModalOpen, closeModal }) => {
 
                         }
                     >
-                        <AllTab tasks={tasks} />
+                        <AllTab />
                     </button>
                     <button
                         className={`tab ${checkActive(2, "active")}`}
                         onClick={() => handleClick(2)}
                     >
-                        <ActiveTab tasks={tasks} />
+                        <ActiveTab />
                     </button>
                     <button
                         className={`tab ${checkActive(3, "active")}`}
                         onClick={() => handleClick(3)}
                     >
-                        <CompletedTab tasks={tasks} />
+                        <CompletedTab />
                     </button>
                 </footer>
                 {isModalOpen && (
-                    <TaskModal closeModal={closeModal} addTask={addTask} categories={categories} />
+                    <TaskModal
+                    closeModal={closeModal}
+                    newTask={newTask}
+                    handleTaskChange={handleTaskChange}
+                    selectedCategory={selectedCategory}
+                    handleCategoryChange={handleCategoryChange}
+                    handleSubmit={handleSubmit}
+                    categories={categories}
+                    />
                 )}
             </div>
         </div>
